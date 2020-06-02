@@ -16,12 +16,13 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 				<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"name" : "Max"
+	"name" : vars.firstName
 }]]]></http:headers>
 			</http:response>
 		</http:listener>
+		<set-variable value="#[message.attributes.queryParams.fname]" doc:name="firstName" doc:id="2afbd3bb-64d9-4fee-8c3e-9aea18e3c375" variableName="firstName"/>
 		<set-payload value="Hello" doc:name="Hello" doc:id="92bdc938-e494-4b65-b4e5-3d62cc9946aa" />
-		<http:request method="GET" doc:name="GET /goodbye" doc:id="55a643e2-ebad-422a-8bc8-33c8efe37174" config-ref="HTTP_Request_configuration" path="/goodbye" responseTimeout="300000">
+		<http:request method="OPTIONS" doc:name="GET /goodbye" doc:id="55a643e2-ebad-422a-8bc8-33c8efe37174" config-ref="HTTP_Request_configuration" path="/goodbye" responseTimeout="300000">
 			<http:query-params ><![CDATA[#[output application/java
 ---
 {
@@ -36,7 +37,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 				<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"fullName" : "Max Mule"
+	"fullName" : "Daniel Mule"
 }]]]></http:headers>
 			</http:response>
 		</http:listener>
